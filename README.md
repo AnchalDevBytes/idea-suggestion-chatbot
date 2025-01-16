@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Idea Generator
+
+The **Idea Generator** is a web application that helps users generate creative app ideas based on their input and provides detailed suggestions for the selected ideas. This application is designed to simplify the brainstorming process and provide inspiration for app development.
+
+## Screenshots
+
+### Idea Generation Interface
+![Idea Generation Interface](./public/ideaGenerate.png)
+
+### Detailed Suggestions
+![Detailed Suggestions](./public/detailedIdeas.png)
+
+---
+
+## Features
+
+- **Generate App Ideas**: Input a topic or type of app you'd like to build, and the app generates a list of ideas.
+- **Select Ideas**: Choose up to two ideas for which you'd like detailed suggestions.
+- **Detailed Suggestions**: Get in-depth suggestions for your selected ideas, complete with titles and descriptions.
+
+## Technologies Used
+
+- **Frontend**: React, TypeScript, Next.js, Tailwind CSS
+- **Backend**: Node.js API (for generating and expanding ideas)
+- **API**: Hugging Face API for natural language generation
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository** :
+    ```bash
+    git https://github.com/AnchalDevBytes/idea-suggestion-chatbot.git
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Install dependencies** :
+    ```bash
+    npm install
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Configure Environment Variables** :
+    ```bash
+    HUGGING_FACE_API_KEY="your hugging face api key"
+    ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Run the development server** :
+    ```bash
+    npm run dev
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deployed on Vercel: [Live](https://idea-suggestion-chatbot.vercel.app/)
