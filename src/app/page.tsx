@@ -1,7 +1,9 @@
 'use client';
+import IdeasList from '@/components/IdeasList';
+import QueryInput from '@/components/QueryInput';
 import { useState } from 'react';
 
-interface Suggestion {
+export interface Suggestion {
   title: string;
   body: string;
 }
@@ -77,67 +79,22 @@ const Home = () => {
     <main className="min-h-screen bg-fuchsia-900/30 p-8">
       <div className="flex flex-col gap-7 max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold text-center">Idea Generator</h1>
-
-        <div className="flex flex-col gap-4">
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="What kind of app are you looking to build?"
-            className="w-full p-4 rounded-lg border text-fuchsia-900 font-medium border-fuchsia-300"
-          />
-          <button
-            onClick={generateIdeas}
-            disabled={loading || !query.trim()}
-            className="w-full bg-fuchsia-700/60 text-white p-4 rounded-lg hover:bg-fuchsia-600/20 disabled:bg-fuchsia-300"
-          >
-            {loading ? 'Generating Ideas...' : 'Generate App Ideas'}
-          </button>
-        </div>
-        
-
+        <QueryInput
+          query={query}
+          setQuery={setQuery}
+          loading={loading}
+          generateIdeas={generateIdeas}
+        />
         {ideas.length > 0 && (
-          <div className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold text-white">Select any of 2 ideas:</h2>
-            <div className="space-y-3">
-              {ideas.map((idea, index) => (
-                <div
-                  key={index}
-                  onClick={() => toggleIdeaSelection(idea)}
-                  className={`p-4 rounded-lg cursor-pointer transition-colors bg-yellow-200 text-black hover:bg-yellow-100 ${
-                    selectedIdeas.includes(idea) ? 'bg-fuchsia-500/90' : ''
-                  }`}
-                >
-                  {idea}
-                </div>
-              ))}
-            </div>
-
-            {selectedIdeas.length === 2 && suggestions.length === 0 && (
-              <button
-                onClick={expandIdeas}
-                disabled={expanding}
-                className="w-full bg-green-500 text-white p-4 rounded-lg hover:bg-green-600 disabled:bg-green-300"
-              >
-                {expanding ? 'Getting Suggestions...' : 'Get Detailed Suggestions'}
-              </button>
-            )}
-
-            {suggestions.length > 0 && (
-              <div className="mt-8 bg-gray-700 p-6 rounded-lg shadow">
-                <h2 className="text-xl font-semibold mb-4 text-white">Detailed Suggestions:</h2>
-                <div className="space-y-6">
-                  {suggestions.map((suggestion, index) => (
-                    <div key={index} className="bg-gray-800 p-4 rounded-md shadow">
-                      <h3 className="text-lg font-bold text-yellow-400">{suggestion.title}</h3>
-                      <p className="text-sm text-gray-300 whitespace-pre-wrap mt-2">{suggestion.body}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
+          <IdeasList
+            ideas={ideas}
+            selectedIdeas={selectedIdeas}
+            toggleIdeaSelection={toggleIdeaSelection}
+            expandIdeas={expandIdeas}
+            expanding={expanding}
+            suggestions={suggestions}
+          />
+        )} 
       </div>
     </main>
   );
